@@ -16,21 +16,21 @@ namespace Module8_Concurrency
                 try
                 {
                      
-                   //BigInteger
-                    var userChoice = Convert.ToDouble(Console.ReadLine());
+                
+                    var userChoice = Convert.ToDouble(Console.ReadLine());      //converts the number to a double if they enter things other than numbers it falls to the catch block
                     
-                    if(userChoice == -1) { Environment.Exit(0); }
+                    if(userChoice == -1) { Environment.Exit(0); }   //Exits the program if the user chooses -1
                     List<double> array = new List<double>();
                     //double[] array = new double[userChoice];
-                    Random rand = new();
-                    var watch1 = new System.Diagnostics.Stopwatch();
+                    Random rand = new();                           //used for random numbers
+                    var watch1 = new System.Diagnostics.Stopwatch();  //used to measure how much time it takes for each task
                     watch1.Start();
                     for(double i = 0; i<userChoice; i++)
                     {
                         array.Add(rand.Next(10)+1) ;
                         //array[i] = rand.Next(10)+1;
                     }
-                    var arrayHolder = array.ToArray();
+                    var arrayHolder = array.ToArray();              //converts the list to an array of equal size to get around the double problem
                     watch1.Stop();
                     var arrayTime = watch1.ElapsedMilliseconds;
                     watch1.Restart();
@@ -64,7 +64,7 @@ namespace Module8_Concurrency
 
 
 
-        static double[] Sumcomputation(double[] arrayToCompute)
+        static double[] Sumcomputation(double[] arrayToCompute) //used to computate the sum of the array on a single thread
         {
             double[] sum = new double[2];
             var watch = new System.Diagnostics.Stopwatch();
